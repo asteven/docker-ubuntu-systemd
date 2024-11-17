@@ -1,0 +1,26 @@
+sudo podman run -d \
+   --name ubuntu --hostname ubuntu \
+   --tmpfs /tmp --tmpfs /run --tmpfs /run/lock \
+   -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+   docker.io/asteven/ubuntu-systemd:18.04
+
+sudo podman run -d \
+   --name ubuntu --hostname ubuntu \
+   --privileged \
+   -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+   docker.io/asteven/ubuntu-systemd:18.04
+
+
+docker run -d --name ubuntu --hostname ubuntu \
+   --tmpfs /tmp --tmpfs /run --tmpfs /run/lock \
+   -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+   docker.io/asteven/ubuntu-systemd:18.04
+
+sudo podman exec -ti ubuntu /bin/bash
+
+
+sudo podman stop ubuntu
+
+
+sudo podman rm ubuntu
+
